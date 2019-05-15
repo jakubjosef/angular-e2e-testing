@@ -9,5 +9,7 @@ RUN  curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
      echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
      echo "deb http://http.debian.net/debian unstable main" > /etc/apt/sources.list.d/firefox.list && \
      apt-get update && \
-     apt-get install -y git openssh-client nodejs yarn xvfb gconf-service google-chrome-stable firefox && \
+     apt-get install -y git openssh-client nodejs yarn xvfb gconf-service google-chrome-stable firefox sudo && \
+     groupadd -g 999 gitlab-runner && \
+     useradd -u 999 -g 999 -d /home/gitlab-runner -m gitlab-runner && \
      apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
