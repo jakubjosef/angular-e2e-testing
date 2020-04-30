@@ -1,4 +1,4 @@
-FROM node:10-stretch
+FROM node:12-buster
 
 RUN  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
      echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
@@ -6,7 +6,6 @@ RUN  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-ke
      apt-get update && \
      apt-get install -y xvfb openssh-client gconf-service google-chrome-stable firefox sudo && \
      apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-     npm install -g yarn@latest && \
      groupadd -g 999 gitlab-runner && \
      useradd -u 999 -g 999 -d /home/gitlab-runner -m gitlab-runner
 
