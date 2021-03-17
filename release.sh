@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 echo "- Build docker image"
 docker build --no-cache -t volterrasystem/angular-e2e-testing .
 echo "- Build finished, pushing latest tag to volterrasystem"

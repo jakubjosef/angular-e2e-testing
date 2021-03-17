@@ -21,17 +21,5 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.1.30.zip" -o "a
 RUN curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/aws-iam-authenticator && \
     chmod +x ./aws-iam-authenticator && mv ./aws-iam-authenticator /usr/local/bin
 
-# install kubectl
-RUN curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" && \
-    chmod +x ./kubectl && mv ./kubectl /usr/local/bin
-
-# install aws
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.1.30.zip" -o "awscliv2.zip" && \
-    unzip awscliv2.zip && rm awscliv2.zip && sudo ./aws/install
-
-# install aws-iam-authenticator
-RUN curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/aws-iam-authenticator && \
-    chmod +x ./aws-iam-authenticator && mv ./aws-iam-authenticator /usr/local/bin
-
 ENV DISPLAY :99.0
 ENV CHROME_BIN /usr/bin/google-chrome
