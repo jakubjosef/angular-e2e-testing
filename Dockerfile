@@ -21,5 +21,9 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.1.30.zip" -o "a
 RUN curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/aws-iam-authenticator && \
     chmod +x ./aws-iam-authenticator && mv ./aws-iam-authenticator /usr/local/bin
 
+#install terraform
+RUN curl https://releases.hashicorp.com/terraform/0.12.30/terraform_0.12.30_linux_amd64.zip -o "terraform.zip" && \
+    unzip terraform.zip && rm terraform.zip && mv ./terraform /usr/local/bin
+
 ENV DISPLAY :99.0
 ENV CHROME_BIN /usr/bin/google-chrome
