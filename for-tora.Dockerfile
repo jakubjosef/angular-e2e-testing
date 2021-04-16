@@ -22,7 +22,7 @@ RUN curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/
     chmod +x ./aws-iam-authenticator && mv ./aws-iam-authenticator /usr/local/bin
 
 #install terraform
-RUN curl https://releases.hashicorp.com/terraform/0.12.30/terraform_0.12.30_linux_amd64.zip -o "terraform.zip" && \
+RUN curl https://releases.hashicorp.com/terraform/0.13.2/terraform_0.13.2_linux_amd64.zip -o "terraform.zip" && \
     unzip terraform.zip && rm terraform.zip && mv ./terraform /usr/local/bin
 
 ENV DISPLAY :99.0
