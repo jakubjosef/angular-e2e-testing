@@ -3,7 +3,7 @@ FROM node:14-buster
 RUN  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
      echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
      apt-get update && \
-     apt-get install -y xvfb openssh-client gconf-service google-chrome-stable firefox-esr sudo && \
+     apt-get install -y xvfb openssh-client gconf-service google-chrome-stable firefox-esr sudo jq && \
      apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
      groupadd -g 999 gitlab-runner && \
      useradd -u 999 -g 999 -d /home/gitlab-runner -m gitlab-runner && \
@@ -24,10 +24,6 @@ RUN curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/
 #install terraform
 RUN curl https://releases.hashicorp.com/terraform/0.13.2/terraform_0.13.2_linux_amd64.zip -o "terraform.zip" && \
     unzip terraform.zip && rm terraform.zip && mv ./terraform /usr/local/bin
-
-#install jq
-RUN wget -O jq https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64 && \
-    chmod +x ./jq && mv ./jq /usr/local/bin
 
 ENV DISPLAY :99.0
 ENV CHROME_BIN /usr/bin/google-chrome
